@@ -16,6 +16,15 @@ function App() {
     }
     return () => clearInterval(interval);
   }, [timeOn]);
+
+  const handleReset = () => {
+    setTime(0);
+    setTimeOn(false);
+  };
+
+  const handleFive = () => {
+    setTime((prevTime) => prevTime + 5000);
+  };
   return (
     <div>
       <div>
@@ -29,7 +38,9 @@ function App() {
 
         <button onClick={() => setTimeOn(false)}>Stop</button>
 
-        <button onClick={() => setTime(0)}>Reset</button>
+        <button onClick={handleReset}>Reset</button>
+
+        <button onClick={handleFive}>plus 5 sec</button>
       </div>
     </div>
   );
