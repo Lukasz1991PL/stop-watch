@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [time, setTime] = useState(0);
   const [timeOn, setTimeOn] = useState(false);
+  const [incrementSec, setIncrementSec] = useState('');
   useEffect(() => {
     let interval = null;
     if (timeOn) {
@@ -25,6 +26,9 @@ function App() {
   const handleFive = () => {
     setTime((prevTime) => prevTime + 5000);
   };
+  const handleSubmit = () => {
+    setTime((prevTime) => prevTime + incrementSec * 1000);
+  };
   return (
     <div>
       <div>
@@ -41,6 +45,13 @@ function App() {
         <button onClick={handleReset}>Reset</button>
 
         <button onClick={handleFive}>plus 5 sec</button>
+
+        <input
+          type='number'
+          value={incrementSec}
+          onChange={(e) => setIncrementSec(+e.target.value)}
+        ></input>
+        <button onClick={handleSubmit}>Add</button>
       </div>
     </div>
   );
